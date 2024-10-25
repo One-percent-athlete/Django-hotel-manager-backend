@@ -15,6 +15,9 @@ class Room(models.Model):
     room_number = models.CharField(max_length=100)
     description = models.TextField(null=True)
 
+    def __str__(self):
+        return f"{self.room_number} - {self.room_type}"
+
 class Booking(models.Model):
     room_number = models.ForeignKey(Room, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -24,3 +27,6 @@ class Booking(models.Model):
     checkout_date = models.DateField()
     booking_amount = models.DecimalField(max_digits=10, decimal_places=2)
     booking_details = models.JSONField()
+
+    def __str__(self):
+        return f"{self.room_number} - {self.user} - {self.checkin_date} - {self.checkout_date}"
