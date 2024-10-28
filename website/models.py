@@ -23,3 +23,11 @@ class Contact(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.created_at}"
+    
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_img = models.ImageField(upload_to="profile_images/")
+    mobile = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.user} {self.mobile}"
