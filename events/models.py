@@ -11,7 +11,7 @@ class EventType(models.Model):
     def __str__(self):
         return self.title
     
-class Event(models.Model):
+class EventBooking(models.Model):
     event_type = models.ForeignKey(EventType, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     event_details = models.TextField()

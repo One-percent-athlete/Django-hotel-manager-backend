@@ -19,7 +19,7 @@ class Room(models.Model):
     def __str__(self):
         return f"{self.room_number} - {self.room_type}"
 
-class Booking(models.Model):
+class RoomBooking(models.Model):
     room_number = models.ForeignKey(Room, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     booking_date = models.DateTimeField(auto_now_add=True)
@@ -33,7 +33,7 @@ class Booking(models.Model):
         return f"{self.room_number} - {self.user} - {self.checkin_date} - {self.checkout_date} - ${self.price}"
     
 class Payment(models.Model):
-    booking = models.ForeignKey(Booking, on_delete=models.CASCADE)
+    booking = models.ForeignKey(RoomBooking, on_delete=models.CASCADE)
     text_id = models.TextField()
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
     response_data = models.TextField()

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Event, EventType
+from .models import EventBooking, EventType
 
-admin.site.register(Event)
+admin.site.register(EventBooking)
 admin.site.register(EventType)
