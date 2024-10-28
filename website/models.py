@@ -40,3 +40,24 @@ class Profile(models.Model):
 def create_user_profiel(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
+
+
+class Careers(models.Model):
+    name = models.CharField(max_length=200, null=True)
+    email = models.CharField(max_length=200, null=True)
+    phone = models.IntegerField(null=True)
+    message = models.TextField(null=True)
+    cv = models.FileField(upload_to="cv_files/")
+    created_at = models.DateTimeField(auto_now_add=True) 
+
+    def __str__(self):
+        return f"{self.name} - {self.created_at}"
+
+class Banners(models.Model):
+    title = models.CharField(max_length=200, null=True)
+    image = models.ImageField(upload_to='banner_images/')
+
+class ControlPanel(models.Model):
+    image = models.ImageField(upload_to='logo_images/')
+
+
