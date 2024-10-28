@@ -19,10 +19,10 @@ class Review(models.Model):
         return f"{self.user} - {self.rating} - {self.created_at}"
 
 class Contact(models.Model):
-    name = models.CharField(max_length=200, null=True)
-    email = models.CharField(max_length=200, null=True)
-    phone = models.IntegerField(blank=True, null=True)
-    message = models.TextField(null=True)
+    name = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    phone = models.IntegerField()
+    message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True) 
 
     def __str__(self):
