@@ -31,3 +31,4 @@ class Booking(models.Model):
 
     def __str__(self):
         return f"{self.room_number} - {self.user} - {self.checkin_date} - {self.checkout_date} - ${self.price}"
+    
