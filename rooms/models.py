@@ -32,3 +32,16 @@ class Booking(models.Model):
     def __str__(self):
         return f"{self.room_number} - {self.user} - {self.checkin_date} - {self.checkout_date} - ${self.price}"
     
+class Payment(models.Model):
+    booking = models.ForeignKey(Booking, on_delete=models.CASCADE)
+    text_id = models.TextField()
+    total_price = models.DecimalField(max_digits=10, decimal_places=2)
+    response_data = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+
+class Gallery(models.Model):
+    image = models.ImageField(upload_to='gallery_images/')
+
+class RoomImage(models.Model):
+    room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE, null=True)
+    image = models.ImageField(upload_to="room_images/")
