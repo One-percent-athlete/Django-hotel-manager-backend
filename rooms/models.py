@@ -39,6 +39,9 @@ class Payment(models.Model):
     response_data = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f"{self.booking} - {self.total_price} - {self.date}"
+
 class Gallery(models.Model):
     image = models.ImageField(upload_to='gallery_images/')
 
