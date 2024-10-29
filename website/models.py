@@ -1,7 +1,6 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
 from django.contrib.auth.models import User
 
 from rooms.models import RoomBooking
@@ -65,7 +64,7 @@ class Banners(models.Model):
     
     class Meta:
         db_table = "banners"
-        verbose_name_plural = 'Banners'
+        verbose_name_plural = "Banners"
 
 
 class ControlPanel(models.Model):
