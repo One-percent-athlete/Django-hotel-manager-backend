@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "rooms",
     "events",
-    "website"
+    "website",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
