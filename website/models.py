@@ -52,10 +52,21 @@ class Careers(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.created_at}"
+    
+    class Meta:
+        verbose_name_plural = 'Careers'
 
 class Banners(models.Model):
     title = models.CharField(max_length=200, null=True)
     image = models.ImageField(upload_to='banner_images/')
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        db_table = "banners"
+        verbose_name_plural = 'Banners'
+
 
 class ControlPanel(models.Model):
     image = models.ImageField(upload_to='logo_images/')

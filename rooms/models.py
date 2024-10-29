@@ -45,6 +45,9 @@ class Payment(models.Model):
 class Gallery(models.Model):
     image = models.ImageField(upload_to='gallery_images/')
 
+    class Meta:
+        verbose_name_plural = 'Galleries'
+
 class RoomImage(models.Model):
     room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE, null=True)
     image = models.ImageField(upload_to="room_images/")
