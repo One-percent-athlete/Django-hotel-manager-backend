@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from rest_framework.generics import ListAPIView
+from .models import RoomType, RoomImage
+from .serializers import RoomTypeSerializer, RoomImageSerializer
 
-# Create your views here.
+class RoomTypeList(ListAPIView):
+    serializer_class = RoomTypeSerializer
+    queryset = RoomType.objects.all()
+
+class RoomImageList(ListAPIView):
+    serializer_class = RoomImageSerializer
+    queryset = RoomImage.objects.all()

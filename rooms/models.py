@@ -51,3 +51,6 @@ class Gallery(models.Model):
 class RoomImage(models.Model):
     room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE, null=True)
     image = models.ImageField(upload_to="room_images/")
+
+    def __str__(self):
+        return self.room_type.title
