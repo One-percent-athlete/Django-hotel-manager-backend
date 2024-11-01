@@ -15,9 +15,6 @@ class RoomImage(models.Model):
     room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE, null=True, related_name="room_type_image")
     image = models.ImageField(upload_to="room_images/")
 
-    def __str__(self):
-        return f"{self.image}"
-    
 class Room(models.Model):
     room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE)
     room_number = models.CharField(max_length=100)

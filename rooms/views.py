@@ -1,11 +1,11 @@
-from rest_framework.generics import ListAPIView
-from .models import RoomType, RoomImage
-from .serializers import RoomTypeSerializer, RoomImageSerializer
+from rest_framework.generics import ListAPIView, RetrieveAPIView
+from .models import RoomType
+from .serializers import RoomTypeSerializer
 
 class RoomTypeList(ListAPIView):
-    serializer_class = RoomTypeSerializer
     queryset = RoomType.objects.all()
+    serializer_class = RoomTypeSerializer
 
-class RoomImageList(ListAPIView):
-    serializer_class = RoomImageSerializer
-    queryset = RoomImage.objects.all()
+class RoomTypeDetail(RetrieveAPIView):
+    queryset = RoomType.objects.all()
+    serializer_class = RoomTypeSerializer

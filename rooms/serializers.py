@@ -1,13 +1,13 @@
 from rest_framework import serializers
 from .models import RoomType, RoomImage
 
-class RoomTypeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RoomType
-        fields = ["id", "title", "details"]
-
-
-class RoomImageSerializer(serializers.ModelSerializer):
+class RoomTypeImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = RoomImage
-        fields = ["id", "room_type", "details"]
+        fields = ["image"]
+
+class RoomTypeSerializer(serializers.ModelSerializer):
+    room_type_image = RoomTypeImageSerializer(many=True)
+    class Meta:
+        model = RoomType
+        fields = ["id", "title", "details", "room_type_image"]

@@ -20,7 +20,7 @@ class RoomTypeAdmin(admin.ModelAdmin):
     def first_image(self, obj):
         first_image = obj.room_type_image.first()
         if first_image:
-            return u"<img src='%s' width='50 />" % first_image.image.url
+            return "<img src='%s' width='50 />" % first_image.image.url
     first_image.allow_tags=True
 
 admin.site.register(RoomType, RoomTypeAdmin)
