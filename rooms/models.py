@@ -1,7 +1,7 @@
 from django.db import models
-# from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 
+# from django.contrib.auth import get_user_model
 # User = get_user_model()
 
 class RoomType(models.Model):
@@ -10,6 +10,13 @@ class RoomType(models.Model):
 
     def __str__(self):
         return self.title
+    
+class RoomImage(models.Model):
+    room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE, null=True, related_name="room_type_image")
+    image = models.ImageField(upload_to="room_images/")
+
+    def __str__(self):
+        return f"{self.image}"
     
 class Room(models.Model):
     room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE)
@@ -47,10 +54,3 @@ class Gallery(models.Model):
 
     class Meta:
         verbose_name_plural = 'Galleries'
-
-class RoomImage(models.Model):
-    room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE, null=True)
-    image = models.ImageField(upload_to="room_images/")
-
-    def __str__(self):
-        return self.room_type.title
