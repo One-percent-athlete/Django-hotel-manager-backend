@@ -9,3 +9,4 @@ class RoomTypeList(ListAPIView):
 class RoomTypeDetail(RetrieveAPIView):
     queryset = RoomType.objects.all()
     serializer_class = RoomTypeSerializer
+    lookup_field = "uuid"

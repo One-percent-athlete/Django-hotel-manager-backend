@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -5,11 +6,12 @@ from django.contrib.auth.models import User
 # User = get_user_model()
 
 class RoomType(models.Model):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     title = models.CharField(max_length=20)
     details = models.JSONField(null=True)
 
     def __str__(self):
-        return self.title
+        return f"{self.title} - {self.uuid}"
     
 class RoomImage(models.Model):
     room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE, null=True, related_name="room_type_image")
