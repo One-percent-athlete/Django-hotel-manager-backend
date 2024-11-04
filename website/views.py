@@ -5,7 +5,7 @@ from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 
 from .models import Banners,Profile
-from .serializers import BannerSerializer, UserSerializer, LoginSerializer
+from .serializers import BannerSerializer, UserSerializer, LoginSerializer, EmailValidationSerializer
 
 class BannerList(ListAPIView):
     serializer_class = BannerSerializer
@@ -34,6 +34,18 @@ class LoginView(APIView):
                 _token=None
                 error="Invalid Username"
             return Response({"token":_token, "error": error})
+
+class EmailValidationView(APIView):
+    def post(self, request):
+        serializer=EmailValidationSerializer(data=request.data)
+
+        if serializer.is_valid():
+            error = None
+            try:
+                user=User.objects.get(email=serializer.validated_data["email"])
+            except user.DoesNotExist:
+                error="Invalid Email"
+            return Response({"error": error})
 
 
 

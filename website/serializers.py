@@ -34,3 +34,9 @@ class LoginSerializer(serializers.ModelSerializer):
             fields = ["username","password"]
         username = serializers.CharField()
         password = serializers.CharField()
+
+class EmailValidationSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = User
+            fields = ["email"]
+        email = serializers.CharField()
