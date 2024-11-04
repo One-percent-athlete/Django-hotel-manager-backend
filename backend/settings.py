@@ -128,7 +128,7 @@ CORS_ALLOWED_ORIGINS = [
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'DEFAULT_AUTHENTICATION_CLASS': [
-        'restframework.authentication.TokenAuthentication'
+        'rest_framework.authentication.TokenAuthentication'
     ],
     'PAGE_SIZE': 6
 }

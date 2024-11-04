@@ -30,10 +30,10 @@ class LoginView(APIView):
                 else:
                     _token=None
                     error="Invalid Password."
-            except User.DoesNotExist:
+            except user.DoesNotExist:
                 _token=None
                 error="Invalid Username"
-            return Response({"token":token, "error": error})
+            return Response({"token":_token, "error": error})
 
 
 
