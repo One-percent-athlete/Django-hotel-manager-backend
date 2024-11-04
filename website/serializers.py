@@ -26,3 +26,8 @@ class UserSerializer(serializers.ModelSerializer):
         # profile = Profile.objects.filter(user=user).update(phone=profile_data["phone"])
         # profile.save()
         return user
+    
+
+class LoginSerializer(serializers.ModelSerializer):
+        username = serializers.CharField()
+        password = serializers.CharField()

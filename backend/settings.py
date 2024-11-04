@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "events",
     "website",
     "rest_framework",
+    "rest_framework.authtoken",
 ]
 
 MIDDLEWARE = [
@@ -126,5 +127,8 @@ CORS_ALLOWED_ORIGINS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_AUTHENTICATION_CLASS': [
+        'restframework.authentication.TokenAuthentication'
+    ],
     'PAGE_SIZE': 6
 }
