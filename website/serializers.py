@@ -46,3 +46,10 @@ class CodeValidationSerializer(serializers.ModelSerializer):
             model = User
             fields = ["code"]
         code = serializers.CharField()
+
+class ChangePasswordSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = User
+            fields = ["email","password"]
+        email = serializers.CharField()
+        password = serializers.CharField()

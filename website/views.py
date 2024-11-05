@@ -5,7 +5,7 @@ from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 
 from .models import Banners,Profile
-from .serializers import BannerSerializer, UserSerializer, LoginSerializer, EmailValidationSerializer, CodeValidationSerializer
+from .serializers import BannerSerializer, UserSerializer, LoginSerializer, EmailValidationSerializer, CodeValidationSerializer, ChangePasswordSerializer
 
 class BannerList(ListAPIView):
     serializer_class = BannerSerializer
@@ -58,5 +58,18 @@ class CodeValidationView(APIView):
             else:
                 return Response({"error": error})
 
+class ChangePasswordView(APIView):
+    def post(self, request):
+        serializer=ChangePasswordSerializer(data=request.data)
+
+        error = None
+        if serializer.is_valid():
+            try:
+                user=User.objects.get(email=serializer.validated_data["email"])
+                user.password=serializer.validated_data["password"]
+                error="Password changed"
+            except user.DoesNotExist:
+                error="Invalid Username"
+        return Response({"error": error})
 
 
