@@ -9,6 +9,7 @@ class RoomType(models.Model):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     title = models.CharField(max_length=20)
     details = models.JSONField(null=True)
+    price_per_night = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return f"{self.title} - {self.uuid}"

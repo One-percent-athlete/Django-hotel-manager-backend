@@ -10,4 +10,4 @@ class RoomTypeSerializer(serializers.ModelSerializer):
     room_type_image = RoomTypeImageSerializer(many=True)
     class Meta:
         model = RoomType
-        fields = ["uuid", "title", "details", "room_type_image"]
+        fields = ["uuid", "title", "details", "room_type_image", "price_per_night"]
