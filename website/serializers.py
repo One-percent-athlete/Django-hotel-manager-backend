@@ -40,3 +40,9 @@ class EmailValidationSerializer(serializers.ModelSerializer):
             model = User
             fields = ["email"]
         email = serializers.CharField()
+
+class CodeValidationSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = User
+            fields = ["code"]
+        code = serializers.CharField()
