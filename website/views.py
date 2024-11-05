@@ -11,11 +11,11 @@ class BannerList(ListAPIView):
     serializer_class = BannerSerializer
     queryset = Banners.objects.all()
 
-class SignupView(CreateAPIView):
+class CustomSignupView(CreateAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
-class LoginView(APIView):
+class CustomLoginView(APIView):
     def post(self, request):
         serializer=LoginSerializer(data=request.data)
 
@@ -58,7 +58,7 @@ class CodeValidationView(APIView):
             else:
                 return Response({"error": error})
 
-class ChangePasswordView(APIView):
+class CustomChangePasswordView(APIView):
     def post(self, request):
         serializer=ChangePasswordSerializer(data=request.data)
 
@@ -66,10 +66,13 @@ class ChangePasswordView(APIView):
         if serializer.is_valid():
             try:
                 user=User.objects.get(email=serializer.validated_data["email"])
-                user.password=serializer.validated_data["password"]
-                error="Password changed"
+                if user:
+                    user.password=serializer.validated_data["password"]
+                    user.save()
+                else:
+                    error="Invalid Infomation"
             except user.DoesNotExist:
-                error="Invalid Username"
+                error="Invalid Email"
         return Response({"error": error})
 
 
