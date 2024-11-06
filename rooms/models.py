@@ -35,6 +35,7 @@ class RoomBooking(models.Model):
     checkout_date = models.DateField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     booking_details = models.JSONField(null=True, blank=True)
+    status = models.CharField(max_length=20, null=True, default="pending")
 
     def __str__(self):
         return f"{self.room_number} - {self.user} - {self.checkin_date} - {self.checkout_date} - ${self.price}"

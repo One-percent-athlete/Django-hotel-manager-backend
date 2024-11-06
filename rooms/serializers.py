@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import RoomType, RoomImage, RoomBooking
+from .models import RoomType, RoomImage, RoomBooking, Room
 
 class RoomTypeImageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,4 +15,9 @@ class RoomTypeSerializer(serializers.ModelSerializer):
 class RoomBookingSerializer(serializers.ModelSerializer):
     class Meta:
         model = RoomBooking
-        fields = ["room_number", "user", "booking_date", "total_guest", "checkin_date", "checkout_date", "price", "booking_details"]
+        fields = ["room_number", "user", "total_guest", "checkin_date", "checkout_date", "price", "booking_details"]
+
+class RoomsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Room
+        fields = ["room_type", "room_number", "description"]
