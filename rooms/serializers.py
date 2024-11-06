@@ -20,4 +20,4 @@ class RoomBookingSerializer(serializers.ModelSerializer):
 class RoomsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Room
-        fields = ["room_type", "room_number", "description"]
+        fields = ["room_type", "room_number"]
